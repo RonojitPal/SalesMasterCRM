@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+    <h1>Customer Records:</h1>
+
+<table class="table  table-striped table-hover table-bordered">
+    <thead class="table-dark">
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col"><a href="/sort_by_firstname">First Name</th>
+            <th scope="col"><a href="/sort_by_lastname">Last Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col"><a href="/sort_by_city">City</th>
+            <th scope="col"><a href="/sort_by_state">State</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col"><a href="/sort_by_order">Order Count</a></th>
+            <th scope="col">Created At</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+
+            
+                {%for sorted_record in sorted_records%}
+                <tr>
+                    <td><a href="{% url 'record' sorted_record.id %}">{{ sorted_record.id }}</a></td>
+                    <td>{{sorted_record.first_name}}</td>
+                    <td>{{sorted_record.last_name}}</td>
+                    <td>{{sorted_record.phone}}</td>
+                    <td>{{sorted_record.email}}</td>
+                    <td>{{sorted_record.address}}</td>
+                    <td>{{sorted_record.city}}</td>
+                    <td>{{sorted_record.state}}</td>
+                    <td>{{sorted_record.zipcode}}</td>
+                    <td>{{sorted_record.order_count}}</td>
+                    <td>{{sorted_record.created_at}}</td>
+                </tr>    
+                {%endfor%}
+            
+
+        </tr>
+    </tbody>
+</table>
+<br />
+
+{%endblock%}

@@ -131,6 +131,41 @@ def update_record(request, pk):
    
 
 
+def sort_by_order(request):
+    if request.user.is_authenticated:
+        sorted_records=CustomerRecord.objects.all().order_by('order_count')
+        return render(request, 'sort_by_order.html', {'sorted_records':sorted_records})
+    
+def sort_by_firstname(request):
+    if request.user.is_authenticated:
+        sorted_records=CustomerRecord.objects.all().order_by('first_name')
+        return render(request, 'sort_by_firstname.html', {'sorted_records':sorted_records})
+    
+
+
+def sort_by_lastname(request):
+    if request.user.is_authenticated:
+        sorted_records=CustomerRecord.objects.all().order_by('last_name')
+        return render(request, 'sort_by_lastname.html', {'sorted_records':sorted_records})    
+    
+
+
+def sort_by_city(request):
+    if request.user.is_authenticated:
+        sorted_records=CustomerRecord.objects.all().order_by('city')
+        return render(request, 'sort_by_city.html', {'sorted_records':sorted_records})
+    
+
+def sort_by_state(request):
+    if request.user.is_authenticated:
+        sorted_records=CustomerRecord.objects.all().order_by('state')
+        return render(request, 'sort_by_state.html', {'sorted_records':sorted_records})    
+
+
+
+
+
+
 
            
 	
